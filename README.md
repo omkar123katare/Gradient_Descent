@@ -16,9 +16,13 @@ Actual working of gradient descent:
 1. for z axis, start with any random value z1
 2. find slope at z1
 3. this slope value and its sign will guide us towards the next point     [ Z ₙₑₓₜ = Z ᶜᵘʳʳᵉⁿᵗ - λ * slope of function @ current point Zᶜᵘʳʳᵉⁿᵗ ] 
+![WhatsApp Image 2022-06-09 at 8 12 47 AM](https://user-images.githubusercontent.com/92416952/172837805-178bddb5-c710-49e1-be19-c96abc5a6198.jpeg)
+
 
 ### Question: Why do we need to multiply the slope by λ?
 ### Answer:To avoid overshooting of values and delay in reaching the minimum point on the fucntion, we multiply the slope value by a factor λ. It is also called as learning rate.
+![WhatsApp Image 2022-06-09 at 5 04 32 PM](https://user-images.githubusercontent.com/92416952/172838049-d0b7a655-d9eb-4fb7-b4ce-6731eab4b743.jpeg)
+
 
 Important term in the gradient descent's formula to find the minimum value of the function step by step is the slope of the function term. To find this term, we need to differentiate this term and substitute the current value of the function in order to get the next value.
 So, to get best values of β for all the features, in order to obtain best fit hyperplane using gradient descent we use the gradient descent formula for all feature columns  βₙₑₓₜ =  βᶜᵘʳʳᵉⁿᵗ - λ * slope of function @ current point βᶜᵘʳʳᵉⁿᵗ .
@@ -29,8 +33,15 @@ So, to get best values of β for all the features, in order to obtain best fit h
 
 ## 3 issues with Gradient Descent:
 1. Learning Rate
+![WhatsApp Image 2022-06-09 at 5 09 55 PM](https://user-images.githubusercontent.com/92416952/172838400-a1088637-c072-4251-bdf0-9fdcd70f1be5.jpeg)
+
 2. Loss Function a) non convex function. b) saddle point.
+![WhatsApp Image 2022-06-09 at 5 11 31 PM](https://user-images.githubusercontent.com/92416952/172838556-998b8e7b-7f92-4231-98d0-4a5b9deb8a23.jpeg)
+![WhatsApp Image 2022-06-09 at 5 12 29 PM](https://user-images.githubusercontent.com/92416952/172838754-1f28d151-9e25-4191-8a96-16ee853189db.jpeg)
+
 3. Issue of data
+![WhatsApp Image 2022-06-09 at 5 13 52 PM](https://user-images.githubusercontent.com/92416952/172838901-2852abb0-9c02-4c15-a9de-4d544ea143a6.jpeg)
+
 
 Batch Gradient Descent vs Stochastic gradient descent vs Mini batch gradient descent
 for Z ₙₑₓₜ = Z ᶜᵘʳʳᵉⁿᵗ - λ * slope of function @ current point Zᶜᵘʳʳᵉⁿᵗ :
@@ -48,7 +59,13 @@ for Z ₙₑₓₜ = Z ᶜᵘʳʳᵉⁿᵗ - λ * slope of function @ current po
 1. when we have big data.
 When we have large number of rows in the training data, in batch gradient descent, the slope term for each feature has sumaation term for errors of all the data points. This requires us to load the whole dataset at once. This step of vectorization is computationally very heavy. Solution to this problem is to use stochastic gradient descent. In stoachastic gradient descent, we only load one random error value out of whole dataset in each step. This makes stochastic gradient descent suitable for big data. 
 2. When we have a non convex function.
+![WhatsApp Image 2022-06-09 at 5 16 37 PM](https://user-images.githubusercontent.com/92416952/172839322-926998a0-4e26-435c-b8ea-67b5670803bc.jpeg)
 If our function has multiple minima, and during gradient descent our new values enter the slope of a local minima, it not possible to come out of it and traverse towards the global minima. In such case, if we use stochastic gradient descent, in each epoch, number of updates made are equal to nuber of rows in the dataset. As the rows are chosen randomly, there is chance that the new value of variable lies away from local minima, thereby increasing chances of ultimately reaching to global minima of loss function with enough epochs.
 
 ### Learning schedule
 Learning rate value is changed after every epoch if we want to reduce the random behaviour of the new values obtained after reaching near the optimal point i.e the minimum value of loss function for each feature. In order to do achieve this, we use a Learning schedule function which returns damped values for learning rate at each consequent epoch. This reduces random fluctuations in the  βₙₑₓₜ value as we reach closer to the optimal  βₙₑₓₜ value.
+
+### Hyperparaeters of mini batch gradient descent
+1. Batch size
+2. learning rate
+3. number of epochs
